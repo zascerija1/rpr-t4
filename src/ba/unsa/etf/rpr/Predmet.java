@@ -1,23 +1,18 @@
 package ba.unsa.etf.rpr;
 
+import java.util.ArrayList;
+
 public class Predmet {
 
     private String nazivPredmeta;
     private int sifraPredmeta;
-    private int velicina;
-    final int maxBrojStudenata;
     int id_profesor;
     int ECTS;
-    private Student [] upisani_na_predmetu;
-    public Predmet(String nazivPredmeta, int sifraPredmeta, int maxBrojStudenata,int profesor,int ECTS){
+    private ArrayList<Student>  upisani_na_predmetu;
+    public Predmet(String nazivPredmeta, int sifraPredmeta, int ECTS){
         this.nazivPredmeta=nazivPredmeta;
-        this.velicina=0;
         this.sifraPredmeta=sifraPredmeta;
-        this.maxBrojStudenata=maxBrojStudenata;
-        this.id_profesor=profesor;
         this.ECTS=ECTS;
-        upisani_na_predmetu= new Student[maxBrojStudenata];
-
     }
 
     public int getId_profesor() {
@@ -28,7 +23,7 @@ public class Predmet {
         return ECTS;
     }
 
-    public Student[] getUpisani_na_predmetu() {
+    public ArrayList<Student> getUpisani_na_predmetu() {
         return upisani_na_predmetu;
     }
     public String getNazivPredmeta() {
@@ -47,32 +42,19 @@ public class Predmet {
         this.sifraPredmeta = sifraPredmeta;
     }
 
-    public Predmet dodajStudenta(Student s){
-        if(velicina>=maxBrojStudenata) throw new RuntimeException("Popunjen kapacitet");
-        else {
-            upisani_na_predmetu[velicina++]=s;
+    public void dodajStudenta(Student s){
 
-        }
-        return this;
+        upisani_na_predmetu.add(s);
 
     }
-    public Predmet ispisiStudenta(Student s){
+    public void  ispisiStudenta(Student s){
 
-        for(int i=0;i<velicina;i++){
-            if(s.equals(upisani_na_predmetu[i])){
-                for(int j=i;j<velicina;j++){
-                    upisani_na_predmetu[j]=upisani_na_predmetu[j+1];
-                }
-                i=velicina;
-                velicina--;
-            }
-        }
-        return this;
+        upisani_na_predmetu.remove(s);
 
     }
     public void ispisi(){
-        for(int i=0;i<velicina;i++){
-            System.out.println(i+1+". "+ upisani_na_predmetu[i]);
+        for(int i=0;i<upisani_na_predmetu.size();i++){
+            System.out.println(i+1+". "+ upisani_na_predmetu.get(i));
         }
     }
 

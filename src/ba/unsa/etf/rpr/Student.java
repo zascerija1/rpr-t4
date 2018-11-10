@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Student {
     private String ime, prezime;
     private int brojIndeksa;
-    private ArrayList<Podaci_o_semestru> arhiva;
-    private Podaci_o_semestru tekuci;
+   // private ArrayList<Podaci_o_semestru> arhiva;
+  //  private Podaci_o_semestru tekuci;
      public String getIme() {
         return ime;
     }
