@@ -8,7 +8,7 @@ public class Predmet {
     private int sifraPredmeta;
     int id_profesor;
     int ECTS;
-    private ArrayList<Student>  upisani_na_predmetu;
+    private ArrayList<Student>  upisani_na_predmetu=new ArrayList<>();
     public Predmet(String nazivPredmeta, int sifraPredmeta, int ECTS){
         this.nazivPredmeta=nazivPredmeta;
         this.sifraPredmeta=sifraPredmeta;
@@ -47,15 +47,18 @@ public class Predmet {
         upisani_na_predmetu.add(s);
 
     }
-    public void  ispisiStudenta(Student s){
+    public void  ispisiStudentaSaPredmeta(Student s){
 
         upisani_na_predmetu.remove(s);
 
     }
-    public void ispisi(){
+    public void ispisiStudente(){
         for(int i=0;i<upisani_na_predmetu.size();i++){
             System.out.println(i+1+". "+ upisani_na_predmetu.get(i));
         }
+    }
+    public void ispisiPredmet(){
+        System.out.println(sifraPredmeta+" "+nazivPredmeta+" ECTS: "+ECTS);
     }
 
 }
